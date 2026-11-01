@@ -75,8 +75,23 @@
       <a class="text-link" href="https://github.com/utsav-chokshi/robotics-fleet-ops">Review code and project documentation <span aria-hidden="true">↗</span></a>
     </section>
 
+    <section class="case-section" aria-labelledby="screenshots-title">
+      <p class="eyebrow">06 / DASHBOARD WALKTHROUGH</p>
+      <h2 id="screenshots-title">A look inside the operator dashboard</h2>
+      <p>These views show the simulated fleet overview and an evidence-backed incident investigation from the local Streamlit dashboard.</p>
+      <div class="screenshot-grid">
+        <figure class="screenshot-card">
+          <img src="assets/screenshots/fleet-overview.png" alt="Fleet overview dashboard showing simulated robot status, battery levels, and an active incident" loading="lazy">
+          <figcaption><strong>Fleet overview</strong><span>Robot status, telemetry, and current incidents in one view.</span></figcaption>
+        </figure>
+        <figure class="screenshot-card">
+          <img src="assets/screenshots/incident-investigation.png" alt="Incident investigation dashboard with a report summary and supporting telemetry evidence" loading="lazy">
+          <figcaption><strong>Incident investigation</strong><span>A report presents measured telemetry separately from recommendations.</span></figcaption>
+        </figure>
+      </div>
+    </section>
     <section class="case-section" aria-labelledby="run-title">
-      <p class="eyebrow">06 / TRY IT LOCALLY</p>
+      <p class="eyebrow">07 / TRY IT LOCALLY</p>
       <h2 id="run-title">Reproduce the MVP</h2>
       <p>With Docker Desktop running with the WSL 2 Linux engine, start the services from the repository root:</p>
       <pre><code>docker compose -f simulator/compose.yaml up --build -d
@@ -92,3 +107,4 @@ Invoke-RestMethod http://localhost:8000/healthz</code></pre>
   </footer>
 </body>
 </html>
+
