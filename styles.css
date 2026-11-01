@@ -52,3 +52,30 @@ footer { min-height: 82px; border-top: 1px solid var(--line); display: flex; jus
   .project-card { grid-template-columns: 34px 1fr; gap: 12px; padding: 22px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.project-links { display: flex; flex-wrap: wrap; gap: 24px; }
+.case-hero, .case-section { max-width: 820px; margin-inline: auto; }
+.case-hero { padding: 64px 0 76px; }
+.back-link { display: inline-block; margin-bottom: 36px; color: var(--muted); font-size: .9rem; }
+.back-link:hover { color: var(--accent); }
+.case-hero h1 { max-width: 800px; font-size: clamp(2.8rem, 7vw, 5.6rem); }
+.case-lede { max-width: 720px; color: var(--muted); font-size: 1.2rem; }
+.status-note { display: grid; gap: 6px; margin: 30px 0; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--surface); }
+.status-note strong { color: var(--accent); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.case-section { padding: 56px 0; border-top: 1px solid var(--line); }
+.case-section h2 { margin: 8px 0 18px; }
+.case-section p:not(.eyebrow) { color: var(--muted); }
+.feature-list { display: grid; gap: 16px; padding-left: 21px; color: var(--muted); }
+.feature-list li::marker { color: var(--accent); }
+.feature-list strong, .direction-note strong { color: var(--text); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 9px; margin: 24px 0; }
+.tag-list span { padding: 6px 11px; border: 1px solid var(--line); border-radius: 99px; color: var(--text); font-size: .82rem; }
+.direction-note { padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); }
+pre { overflow-x: auto; padding: 20px; background: var(--surface); border: 1px solid var(--line); color: var(--accent); }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .9em; }
+.case-section > code { color: var(--accent); }
+@media (max-width: 650px) {
+  .case-hero, .case-section { width: min(100% - 36px, 820px); }
+  .case-hero { padding: 45px 0 55px; }
+  .case-section { padding: 42px 0; }
+}
