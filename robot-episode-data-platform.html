@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A robotics data-engineering case study: raw-first ingestion, PostgreSQL, Prefect, Parquet, DuckDB and traceable model evaluation.">
+  <meta name="description" content="A robotics data-engineering case study: raw-first ingestion, PostgreSQL, Prefect, Parquet, DuckDB and reproducible experiment datasets.">
   <title>Robot Episode Data Platform | Utsav Chokshi</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -51,17 +51,15 @@
 
     <section class="case-section" id="results" aria-labelledby="results-title">
       <p class="eyebrow">03 / MEASURED RESULTS · 9 NOVEMBER 2026</p>
-      <h2 id="results-title">Complete evidence, including a model that failed</h2>
+      <h2 id="results-title">Reliable data, repeatable results</h2>
       <div class="results-grid">
-        <div><strong>54 / 54</strong><span>Structured simulator tasks succeeded</span></div>
-        <div><strong>90 / 90</strong><span>Model attempts completed with retained evidence</span></div>
-        <div><strong>0 / 90</strong><span>Model outputs met the required plan schema</span></div>
+        <div><strong>110</strong><span>Passing local platform checks</span></div>
+        <div><strong>164</strong><span>Retained attempts replayed without adding facts</span></div>
+        <div><strong>3 / 3</strong><span>Dataset versions rebuilt with matching tables and metrics</span></div>
       </div>
-      <p>The fixed set contains 30 instructions across three repetition seeds. Only 54 slots apply to the structured controller; 36 language-only slots are not applicable. The model has 90 applicable slots. These are separate configurations, not a paired comparison of physical success.</p>
-      <p>The pinned SmolVLM-256M model was unsuitable for task selection under the tested settings. I retained all invalid responses and classified them as plan-schema failures. Model physical success is not applicable because no proposal was executed.</p>
-      <p>On an i5-6500T CPU, model worker-wall latency was 17.49 seconds at p50 and 24.88 seconds at p95. Ninety sequential attempts took about 28.1 minutes. Runtime used two CPUs and a 6 GiB memory limit.</p>
-      <a class="text-link" href="assets/evidence/robotics-benchmark.json" download>Download measured results and provenance <span aria-hidden="true">↓</span></a>
-      <figure class="screenshot-card case-media"><img src="assets/screenshots/data-benchmark-dashboard.png" alt="Actual fixed evaluation dashboard showing complete 54 of 54 structured and 90 of 90 model evidence coverage" loading="lazy"><figcaption><strong>Fixed evaluation report</strong><span>An actual local dashboard capture. Machine-readable results above include the complete scores and immutable identities.</span></figcaption></figure>
+      <p>Raw replay covered 71 robot episodes and 93 exploratory proposal attempts, including development evidence. These counts measure data integrity, not model accuracy. Historical datasets remain reproducible after the catalog grows.</p>
+      <p>The separate structured simulator baseline completed 54/54 tasks in the fixed, bounded scene. It uses known simulator handles; repetition seeds do not establish general visual grounding or physical-robot performance.</p>
+      <a class="text-link" href="assets/evidence/robotics-benchmark.json" download>Download complete measured evidence and provenance <span aria-hidden="true">↓</span></a>
     </section>
 
     <section class="case-section" aria-labelledby="reliability-title">
@@ -87,8 +85,16 @@
       <p>Download the source bundle, follow its README to generate a development dataset, then open the local dashboard. The included three-minute walkthrough covers Overview, Episodes, Evaluations, Proposals and Data quality. The full optional model benchmark takes longer than the development quick start.</p>
     </section>
 
+    <section class="case-section" id="future" aria-labelledby="future-title">
+      <p class="eyebrow">06 / FUTURE ENHANCEMENTS</p>
+      <h2 id="future-title">Improve language-driven planning</h2>
+      <p>The episode data platform is implemented and independently reproducible. My next enhancement is to improve the optional language-planning provider, investigate constrained structured outputs and evaluate broader scenes with a newly frozen test set.</p>
+      <p>An exploratory adapter has already been evaluated, but its provider did not meet the required plan-output contract. Its original unsuccessful results remain in the technical documentation. This is an experimental extension, not a validated robot-planning capability; proposals cannot execute actions.</p>
+      <a class="text-link" href="https://github.com/utsav-chokshi/robot-episode-data-platform/blob/main/docs/future-enhancements.md">Enhancement plan and existing evaluation <span aria-hidden="true">↗</span></a>
+    </section>
+
     <section class="case-section" id="reproduce" aria-labelledby="reproduce-title">
-      <p class="eyebrow">06 / RUN IT YOURSELF</p>
+      <p class="eyebrow">07 / RUN IT YOURSELF</p>
       <h2 id="reproduce-title">Reproduce the workflow locally</h2>
       <p>Use Docker Desktop with Linux containers and PowerShell. No physical robot, dedicated GPU or paid API is required. Initial builds download dependencies and robot assets.</p>
       <p>Clone the repository, then run these commands from its root:</p>
@@ -101,7 +107,7 @@ docker compose --profile ingestion run --rm ingestor
 docker compose --profile pipelines run --build --rm pipeline
 docker compose --profile dashboard up --build -d --wait dashboard</code></pre>
       <p>Open the dashboard at <code>http://localhost:8501</code>, the API documentation at <code>http://localhost:8010/docs</code> and Prefect at <code>http://localhost:4201</code>. On a fresh setup, this creates the 17-case development dataset with expected successful, failed-grasp and rejected-request examples.</p>
-      <p>The archived benchmark results above come from a separate fixed run. Reproducing that optional benchmark requires preparing the local model weights and running all 54 structured and 90 model attempts. CPU inference took about 28 minutes in the measured run, in addition to builds and data processing.</p>
+      <p>The archived benchmark in the technical documentation comes from a separate fixed run. Reproducing that optional benchmark requires preparing the local model weights and running all 54 structured and 90 model attempts. CPU inference took about 28 minutes in the measured run, in addition to builds and data processing.</p>
       <div class="project-links">
         <a class="text-link" href="https://github.com/utsav-chokshi/robot-episode-data-platform#readme">Full setup and troubleshooting <span aria-hidden="true">↗</span></a>
         <a class="text-link" href="https://github.com/utsav-chokshi/robot-episode-data-platform/blob/main/docs/benchmark-validation.md">Reproduce the fixed benchmark <span aria-hidden="true">↗</span></a>
