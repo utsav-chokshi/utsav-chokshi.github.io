@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A robotics data-engineering case study: raw-first ingestion, PostgreSQL, Prefect, Parquet, DuckDB and traceable model evaluation.">
+  <title>Robot Episode Data Platform | Utsav Chokshi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">UC<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="index.html#work">Projects</a><a href="#results">Results</a><a href="#demo">Demo</a><a href="https://github.com/utsav-chokshi/robot-episode-data-platform">Source</a></nav>
+  </header>
+  <main>
+    <section class="case-hero">
+      <a class="back-link" href="index.html#work">← All projects</a>
+      <p class="eyebrow">PROJECT 02 · ROBOTICS DATA ENGINEERING</p>
+      <h1>Robot Episode Data Platform</h1>
+      <p class="case-lede">From a robot experiment to a dataset you can inspect, rebuild and trust.</p>
+      <p>I built a local data platform that preserves camera observations, events, actions, model outputs and outcomes, then links them to versioned analytical datasets and evaluation reports.</p>
+      <div class="status-note"><strong>Implemented and measured locally</strong><span>Raw-first ingestion, PostgreSQL projections, Prefect orchestration, Parquet publication, DuckDB checks and a read-only evidence dashboard. All 110 local checks passed.</span></div>
+      <a class="button" href="https://github.com/utsav-chokshi/robot-episode-data-platform">View source on GitHub <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="assets/downloads/robot-episode-data-platform-source.zip" download>Download source and Docker setup <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="case-section" aria-labelledby="problem-title">
+      <p class="eyebrow">01 / THE DATA PROBLEM</p>
+      <h2 id="problem-title">A score needs a traceable experiment</h2>
+      <p>A successful robot task can have incomplete data. A failed task can have complete, useful evidence. I designed the platform to keep task outcome, completeness, quality and model validity separate, so analysts can understand both successful and failed experiments.</p>
+      <ul class="feature-list">
+        <li><strong>Preserve before projection:</strong> original bytes and receipts remain available when database projection needs recovery.</li>
+        <li><strong>Replay without execution:</strong> repeated delivery rebuilds data projections without another robot task or model call.</li>
+        <li><strong>Version analytical inputs:</strong> published datasets bind source hashes, explicit assignments, code identity and quality checks.</li>
+      </ul>
+    </section>
+
+    <section class="case-section" aria-labelledby="architecture-title">
+      <p class="eyebrow">02 / IMPLEMENTED ARCHITECTURE</p>
+      <h2 id="architecture-title">An evidence path from capture to evaluation</h2>
+      <ol class="data-path" aria-label="Data pipeline">
+        <li><strong>Capture</strong><span>MuJoCo / Panda images, events and measured outcomes</span></li>
+        <li><strong>Preserve &amp; validate</strong><span>Content-addressed raw bytes, receipts and reference checks</span></li>
+        <li><strong>Project</strong><span>Transactional PostgreSQL metadata with duplicate identities controlled</span></li>
+        <li><strong>Publish</strong><span>Prefect → frozen inputs → Parquet / DuckDB</span></li>
+        <li><strong>Evaluate &amp; inspect</strong><span>Dataset-linked reports → FastAPI → Streamlit</span></li>
+      </ol>
+      <div class="tag-list" aria-label="Implemented technologies"><span>Python</span><span>PostgreSQL</span><span>Prefect</span><span>Parquet / PyArrow</span><span>DuckDB</span><span>FastAPI</span><span>MuJoCo / Panda</span><span>Streamlit</span><span>Docker Compose</span><span>pytest</span></div>
+      <p>An offline, replaceable vision-language adapter produces separate proposal attempts. Its inputs exclude evaluator targets and reference poses. Proposals never operate the robot.</p>
+    </section>
+
+    <section class="case-section" id="results" aria-labelledby="results-title">
+      <p class="eyebrow">03 / MEASURED RESULTS · 9 NOVEMBER 2026</p>
+      <h2 id="results-title">Complete evidence, including a model that failed</h2>
+      <div class="results-grid">
+        <div><strong>54 / 54</strong><span>Structured simulator tasks succeeded</span></div>
+        <div><strong>90 / 90</strong><span>Model attempts completed with retained evidence</span></div>
+        <div><strong>0 / 90</strong><span>Model outputs met the required plan schema</span></div>
+      </div>
+      <p>The fixed set contains 30 instructions across three repetition seeds. Only 54 slots apply to the structured controller; 36 language-only slots are not applicable. The model has 90 applicable slots. These are separate configurations, not a paired comparison of physical success.</p>
+      <p>The pinned SmolVLM-256M model was unsuitable for task selection under the tested settings. I retained all invalid responses and classified them as plan-schema failures. Model physical success is not applicable because no proposal was executed.</p>
+      <p>On an i5-6500T CPU, model worker-wall latency was 17.49 seconds at p50 and 24.88 seconds at p95. Ninety sequential attempts took about 28.1 minutes. Runtime used two CPUs and a 6 GiB memory limit.</p>
+      <a class="text-link" href="assets/evidence/robotics-benchmark.json" download>Download measured results and provenance <span aria-hidden="true">↓</span></a>
+      <figure class="screenshot-card case-media"><img src="assets/screenshots/data-benchmark-dashboard.png" alt="Actual fixed evaluation dashboard showing complete 54 of 54 structured and 90 of 90 model evidence coverage" loading="lazy"><figcaption><strong>Fixed evaluation report</strong><span>An actual local dashboard capture. Machine-readable results above include the complete scores and immutable identities.</span></figcaption></figure>
+    </section>
+
+    <section class="case-section" aria-labelledby="reliability-title">
+      <p class="eyebrow">04 / ENGINEERING VALIDATION</p>
+      <h2 id="reliability-title">Rebuild the data without repeating the experiment</h2>
+      <ul class="feature-list">
+        <li><strong>110 passing local checks:</strong> 103 core, analytics and evaluation checks plus seven dashboard acceptance checks.</li>
+        <li><strong>Duplicate-safe raw replay:</strong> 71 robot episodes and 93 model attempts replayed without changing database fact counts. These audit totals include earlier development attempts.</li>
+        <li><strong>Historical reproducibility:</strong> both historical datasets and the benchmark dataset rebuilt with matching logical tables and metrics.</li>
+        <li><strong>Fresh application-volume test:</strong> a separate Docker workspace completed capture, inference, ingestion, a real Prefect flow, rebuild, evaluation, dashboard health and replay.</li>
+      </ul>
+      <p>The fresh-volume check reused built images and prepared read-only model weights. Remote CI, other host platforms and exhaustive host power-loss behavior remain unverified.</p>
+    </section>
+
+    <section class="case-section" id="demo" aria-labelledby="demo-title">
+      <p class="eyebrow">05 / SEE THE ROBOTICS CONTEXT</p>
+      <h2 id="demo-title">One captured episode, before and after</h2>
+      <p>These actual development images illustrate the observation-to-outcome trace. They come from a separate development episode, not additional benchmark trials. The baseline controller uses known simulator handles.</p>
+      <div class="robot-pair">
+        <figure class="screenshot-card"><img src="assets/screenshots/data-robot-initial.png" alt="Initial simulated tabletop with the Panda arm, colored packages and destination zones" loading="lazy"><figcaption><strong>Initial observation</strong><span>Camera bytes and configuration are retained.</span></figcaption></figure>
+        <figure class="screenshot-card"><img src="assets/screenshots/data-robot-final.png" alt="Final simulated tabletop after the structured placement task" loading="lazy"><figcaption><strong>Final observation</strong><span>Placement outcome is measured independently.</span></figcaption></figure>
+      </div>
+      <p>Download the source bundle, follow its README to generate a development dataset, then open the local dashboard. The included three-minute walkthrough covers Overview, Episodes, Evaluations, Proposals and Data quality. The full optional model benchmark takes longer than the development quick start.</p>
+    </section>
+
+    <section class="case-section" aria-labelledby="limits-title">
+      <p class="eyebrow">06 / SCOPE AND JUDGMENT</p>
+      <h2 id="limits-title">What this establishes</h2>
+      <p>A reproducible local experiment-data workflow, tested recovery boundaries and honest model evaluation. The bounded scene, repetition seeds and public appearance-to-handle legend do not establish general visual grounding, arbitrary-scene manipulation, production scale or physical-robot deployment.</p>
+      <p>This is a separate project from my fleet operations center. Project 1 focuses on operational incidents and investigation; this project focuses on data capture, lineage, analytical publication and evaluation.</p>
+      <a class="text-link" href="index.html#work">Explore both projects <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <footer><span>© 2026 Utsav Chokshi</span><a href="index.html">Portfolio home <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>

@@ -85,3 +85,19 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .screenshot-card img { display: block; width: 100%; height: auto; }
 .screenshot-card figcaption { display: grid; gap: 3px; padding: 14px 16px 16px; color: var(--muted); font-size: .9rem; }
 .screenshot-card figcaption strong { color: var(--text); }
+
+.project-card + .project-card { margin-top: 24px; }
+.data-path { display: grid; gap: 0; list-style: none; padding: 0; border-top: 1px solid var(--line); }
+.data-path li { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.data-path strong { color: var(--accent); }
+.data-path span { color: var(--muted); }
+.results-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin: 28px 0; }
+.results-grid > div { display: grid; gap: 8px; padding: 20px; background: var(--surface); border: 1px solid var(--line); }
+.results-grid strong { color: var(--accent); font-size: clamp(1.7rem,3vw,2.4rem); letter-spacing: -.04em; }
+.results-grid span { color: var(--muted); font-size: .9rem; }
+.case-media { margin-top: 30px; }
+.robot-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+@media (max-width: 650px) {
+  .data-path li { grid-template-columns: 1fr; gap: 4px; }
+  .results-grid, .robot-pair { grid-template-columns: 1fr; }
+}
