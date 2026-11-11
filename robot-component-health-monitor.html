@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A reproducible component sensor-data pipeline with immutable evidence, frozen evaluation and a read-only health dashboard.">
+  <title>Robot Component Health Monitor | Utsav Chokshi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header"><a class="wordmark" href="index.html">UC<span>.</span></a><nav aria-label="Main navigation"><a href="index.html#work">Projects</a><a href="#results">Results</a><a href="https://github.com/utsav-chokshi">GitHub</a></nav></header>
+  <main>
+    <section class="case-hero" aria-labelledby="project-title">
+      <a class="back-link" href="index.html#work">← Back to projects</a>
+      <p class="eyebrow">SENSOR DATA ENGINEERING · COMPONENT CONDITION MONITORING</p>
+      <h1 id="project-title">Robot Component Health Monitor<span class="accent">.</span></h1>
+      <p class="case-lede">From original sensor measurements to versioned features, reference-relative alerts and the evidence behind each result.</p>
+      <div class="status-note"><strong>Implemented and locally verified</strong><span>72 passing checks, four forced-stop recoveries and matching analytical rebuilds. Case study: IMS industrial bearing experiment 2.</span></div>
+      <a class="button" href="https://github.com/utsav-chokshi/robot-component-health-monitor">View source on GitHub <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="assets/downloads/robot-component-health-monitor-source.zip" download>Download source and Docker setup <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="case-section" aria-labelledby="problem-title">
+      <p class="eyebrow">01 / THE DATA PROBLEM</p><h2 id="problem-title">A score needs its measurement history</h2>
+      <p>A useful component-health workflow must explain which recording produced an alert, whether the input was valid and which baseline was applied. I built the pipeline to preserve that evidence and reproduce the result after processing failures.</p>
+      <p>The source is 984 real industrial bearing test-rig recordings across four channels. This is a robotics-relevant component case study; the measurements are not robot telemetry.</p>
+    </section>
+    <section class="case-section" aria-labelledby="architecture-title">
+      <p class="eyebrow">02 / IMPLEMENTED ARCHITECTURE</p><h2 id="architecture-title">Preserve, version, evaluate, inspect</h2>
+      <ol class="data-path" aria-label="Component data pipeline">
+        <li><strong>Preserve</strong><span>Content-addressed original measurements and immutable receipts precede projection.</span></li>
+        <li><strong>Project &amp; recover</strong><span>PostgreSQL records accepted input and lineage; replay works without the source directory.</span></li>
+        <li><strong>Publish features</strong><span>Prefect / NumPy → frozen inputs → typed Parquet and DuckDB checks.</span></li>
+        <li><strong>Freeze &amp; evaluate</strong><span>Reference-only median/MAD calibration and a sealed chronological policy.</span></li>
+        <li><strong>Inspect evidence</strong><span>FastAPI verified readers → Streamlit trends, alerts, quality and source previews.</span></li>
+      </ol>
+      <div class="tag-list" aria-label="Implemented technologies"><span>Python</span><span>PostgreSQL / Alembic</span><span>Prefect</span><span>NumPy</span><span>Parquet / PyArrow</span><span>DuckDB</span><span>FastAPI</span><span>Streamlit / Altair</span><span>Docker Compose</span><span>pytest</span></div>
+      <p>The dashboard has no database credentials or data-volume mounts. Every analytical request selects a registered build; source inspection separately verifies the original bytes and receipt.</p>
+    </section>
+    <section class="case-section" id="results" aria-labelledby="results-title">
+      <p class="eyebrow">03 / MEASURED RESULTS · 10 NOVEMBER 2026</p><h2 id="results-title">Traceable data, repeatable analytics</h2>
+      <div class="results-grid"><div><strong>3,936</strong><span>Eligible recording/channel feature windows</span></div><div><strong>72</strong><span>Passing local core/API and dashboard checks</span></div><div><strong>4</strong><span>Targeted forced-stop recoveries passed</span></div></div>
+      <p>All 984 original recordings—544,618,480 bytes—were verified. A separate Docker workspace with empty application volumes reproduced the original feature, development-health and evaluation manifests and final metrics. An orchestrated Prefect rebuild also matched.</p>
+      <p>Reference calibration uses 196 recordings; development uses 196 and evaluation uses 592. All 3,152 operational development/evaluation slots were scorable. Evaluation retained four open-boundary reference-relative alert episodes, one per channel.</p>
+      <a class="text-link" href="assets/evidence/component-health-verification.json" download>Download verification summary and provenance <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="case-section" aria-labelledby="reliability-title">
+      <p class="eyebrow">04 / ENGINEERING VALIDATION</p><h2 id="reliability-title">Recover without changing the experiment</h2>
+      <ul class="feature-list">
+        <li><strong>Raw-first recovery:</strong> after a forced stop, 25 durable receipts but only 24 projections remained. Replay recovered the missing update; a second replay added zero.</li>
+        <li><strong>Publication recovery:</strong> forced stops after feature, health and evaluation promotion recovered one verified registration per build.</li>
+        <li><strong>Integrity checks:</strong> corrupted raw recordings, receipts and Parquet were rejected; missing files stayed unavailable. Verified restoration recovered reads.</li>
+        <li><strong>Availability:</strong> a real database stop produced unavailable readiness/catalog/evidence responses; restarting PostgreSQL recovered the API without an API restart.</li>
+      </ul>
+      <p>The final suites passed 67 core/API and five dashboard tests. Prepared source, base images and dependency caches were reused. Fresh-host acquisition/extraction, other architectures, exhaustive power-loss behavior and remote CI outcomes remain unverified.</p>
+    </section>
+    <section class="case-section" id="demo" aria-labelledby="demo-title">
+      <p class="eyebrow">05 / EXPLORE THE EVIDENCE</p><h2 id="demo-title">Follow an alert back to its recording</h2>
+      <p>Choose a bearing and capture range, inspect feature and score trends, then open an alert's paginated evidence. The provenance view verifies the original recording and displays a min/max waveform preview with frozen features. Reference captures remain fit-only; missing or unscorable observations never become healthy zero scores.</p>
+      <p>The three-minute walkthrough covers Trends, Alert evidence, Data quality and Provenance. The dashboard is hosted locally through Docker; no public live application or maintenance action is exposed.</p>
+      <a class="text-link" href="https://github.com/utsav-chokshi/robot-component-health-monitor/blob/main/docs/demo.md">Open the demo guide <span aria-hidden="true">↗</span></a>
+    </section>
+    <section class="case-section" aria-labelledby="limits-title">
+      <p class="eyebrow">06 / INTERPRETATION &amp; FUTURE WORK</p><h2 id="limits-title">Keep condition scores tied to their evidence</h2>
+      <p>The dataset lacks reliable per-record healthy/fault-onset labels and exact failure timing. An excursion is not a confirmed defect, and other bearings are not labeled healthy controls. Detection accuracy, false-alarm rate, warning lead time, failure probability and remaining life are unestablished. Physical amplitude scaling and source timezone remain unverified.</p>
+      <p>A guarded local investigation agent is a future enhancement. Its initial pilot did not pass evidence-grounding checks, so inference remains disabled. The next version needs a revised controller, validated citations and a new passing evaluation before integration.</p>
+      <a class="text-link" href="https://github.com/utsav-chokshi/robot-component-health-monitor/blob/main/docs/future-enhancements.md">Read the enhancement plan <span aria-hidden="true">↗</span></a>
+    </section>
+    <section class="case-section" id="reproduce" aria-labelledby="reproduce-title">
+      <p class="eyebrow">07 / RUN IT YOURSELF</p><h2 id="reproduce-title">Reproduce the workflow with Docker</h2>
+      <p>Use Linux/amd64 containers and PowerShell. No GPU, physical robot or paid API is required. Initial setup downloads dependencies; obtain, verify and manually extract the IMS source separately.</p>
+      <pre><code>git clone https://github.com/utsav-chokshi/robot-component-health-monitor.git
+cd robot-component-health-monitor
+./scripts/Initialize-LocalEnvironment.ps1
+docker compose up --build -d --wait dashboard</code></pre>
+      <p>This starts an empty dashboard at <code>http://localhost:8502</code> and API docs at <code>http://localhost:8020/docs</code>. Follow the reproduction guide to prepare IMS data and run ingestion, replay, features, calibration and frozen evaluation.</p>
+      <div class="project-links"><a class="text-link" href="https://github.com/utsav-chokshi/robot-component-health-monitor/blob/main/docs/reproduction.md">Complete reproduction guide <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/utsav-chokshi/robot-component-health-monitor/blob/main/THIRD_PARTY.md">Dataset attribution <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+  <footer><span>© 2026 Utsav Chokshi</span><a href="index.html">Portfolio home <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
