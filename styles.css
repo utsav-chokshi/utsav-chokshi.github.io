@@ -101,3 +101,10 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
   .data-path li { grid-template-columns: 1fr; gap: 4px; }
   .results-grid, .robot-pair { grid-template-columns: 1fr; }
 }
+
+/* Personal introduction: keep the full pitch readable beside the hero decoration. */
+.hero-pitch { max-width: 720px; position: relative; z-index: 1; }
+.hero-pitch .intro { max-width: none; margin: 0 0 22px; }
+.hero-pitch .pitch-lead { color: var(--text); font-weight: 600; }
+.hero-pitch + .button { margin-top: 12px; }
+@media (max-width: 1000px) { .hero--pitch .hero-mark { display: none; } }
