@@ -137,3 +137,18 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
   .hero-actions { align-items: flex-start; gap: 14px; }
   .experience-layout { margin-top: 24px; }
 }
+
+/* Compact project evidence in a horizontal desktop layout. */
+.experience-summary { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.projects-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.projects-grid .project-card { display: flex; flex-direction: column; min-width: 0; padding: 24px; gap: 16px; }
+.projects-grid .project-card + .project-card { margin-top: 0; }
+.projects-grid .project-card > div:last-child { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.projects-grid h3 { font-size: 1.3rem; line-height: 1.25; margin-bottom: 16px; }
+.projects-grid .project-type { font-size: .64rem; letter-spacing: .1em; min-height: 2.8em; }
+.projects-grid .project-card p:not(.project-type) { font-size: .94rem; }
+.projects-grid .project-card .project-evidence { font-size: .84rem; }
+.projects-grid .project-links { display: grid; gap: 0; margin-top: auto; padding-top: 8px; }
+.projects-grid .text-link { font-size: .85rem; }
+@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 650px) { .projects-grid, .experience-summary { grid-template-columns: 1fr; } }
