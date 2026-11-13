@@ -207,3 +207,24 @@ h2 { font-size: clamp(2.1rem,4.7vw,3.2rem); letter-spacing: -.035em; line-height
   .projects-grid .project-card { transition: none; }
   .projects-grid .project-card:hover, .projects-grid .project-card:focus-within { transform: none; }
 }
+
+/* A little ambient depth, with the classic palette and quiet content retained. */
+:root {
+  --ambient-teal: rgba(69,169,163,.17);
+  --ambient-blue: rgba(78,111,180,.12);
+  --ambient-warm: rgba(157,130,86,.055);
+}
+:root[data-theme="light"] {
+  --ambient-teal: rgba(87,156,148,.13);
+  --ambient-blue: rgba(102,134,166,.09);
+  --ambient-warm: rgba(184,151,97,.08);
+}
+body { position: relative; isolation: isolate; min-height: 100vh; background-image: radial-gradient(ellipse 900px 650px at 100% 0%,var(--ambient-teal),transparent 72%),radial-gradient(ellipse 800px 650px at -15% 45%,var(--ambient-blue),transparent 75%),radial-gradient(ellipse 900px 600px at 100% 100%,var(--ambient-warm),transparent 75%); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .028; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch' seed='8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.7'/%3E%3C/svg%3E"); }
+.hero--pitch::after { content: ""; position: absolute; width: 620px; height: 620px; right: -170px; top: 25px; z-index: -1; pointer-events: none; border-radius: 50%; background: radial-gradient(circle,var(--ambient-teal),transparent 69%); }
+.data-motif circle { transform-box: fill-box; transform-origin: center; animation: data-pulse 5.4s ease-in-out infinite; }
+.data-motif circle:nth-of-type(2) { animation-delay: 1.8s; }
+.data-motif circle:nth-of-type(3) { animation-delay: 3.6s; }
+@keyframes data-pulse { 0%,100% { opacity: .5; transform: scale(.85); } 45%,55% { opacity: 1; transform: scale(1.4); } }
+@media (max-width: 650px) { .hero--pitch::after { width: 420px; height: 560px; right: -230px; opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .data-motif circle { animation: none; opacity: .8; } }
