@@ -1,4 +1,4 @@
-# Utsav Chokshi — Robotics Portfolio
+# Utsav Chokshi: Robotics Portfolio
 
 A plain HTML and CSS portfolio for GitHub Pages.
 
@@ -12,5 +12,5 @@ Create a GitHub repository named `utsav-chokshi.github.io`, connect this folder 
 
 ## Site files
 
-- `index.html` — portfolio content
-- `styles.css` — responsive visual styling
+- `index.html`: portfolio content
+- `styles.css`: responsive visual styling
