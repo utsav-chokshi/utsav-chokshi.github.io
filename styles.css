@@ -108,3 +108,32 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size
 .hero-pitch .pitch-lead { color: var(--text); font-weight: 600; }
 .hero-pitch + .button { margin-top: 12px; }
 @media (max-width: 1000px) { .hero--pitch .hero-mark { display: none; } }
+
+/* Homepage positioning: connect capabilities, career evidence and selected work. */
+.section-intro { max-width: 780px; color: var(--muted); font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; margin-top: 32px; }
+.hero-actions .text-link { margin-top: 0; }
+.button-primary { border-color: var(--accent); color: var(--accent); }
+.strengths-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 26px; }
+.strength { padding: 26px 0; border-top: 2px solid var(--accent); }
+.strength-number { color: var(--accent); font-size: .72rem; letter-spacing: .1em; }
+.strength h3 { margin-top: 18px; font-size: 1.45rem; }
+.strength p { color: var(--muted); }
+.strength .skill-detail { font-size: .84rem; line-height: 1.8; }
+.experience-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; margin-top: 36px; }
+.experience-layout p { color: var(--muted); }
+.role-context { font-size: .9rem; }
+.experience-layout .feature-list { margin-top: 0; }
+.project-evidence { font-size: .92rem; }
+.project-evidence strong { color: var(--text); }
+.contact-section { padding-bottom: 100px; }
+@media (max-width: 800px) {
+  .strengths-grid, .experience-layout { grid-template-columns: 1fr; gap: 16px; }
+  .strength { padding-block: 22px; }
+}
+@media (max-width: 650px) {
+  .portfolio-home .site-header { height: auto; min-height: 82px; align-items: flex-start; padding-block: 20px; gap: 22px; }
+  .portfolio-home nav { flex-wrap: wrap; justify-content: flex-end; gap: 8px 16px; max-width: 260px; }
+  .hero-actions { align-items: flex-start; gap: 14px; }
+  .experience-layout { margin-top: 24px; }
+}
